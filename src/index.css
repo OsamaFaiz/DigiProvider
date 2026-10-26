@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import 'tailwindcss';
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', ui-sans-serif, system-ui, sans-serif;
+  --color-violet: #7250f5;
+  --color-purple: #8064ff;
+  --color-deep-violet: #532fe0;
+  --color-deep-purple: #5e3de6;
+  --color-lavender: #b9a5ff;
+  --color-cta: #ffd83d;
+  --color-ink: #171329;
+  --color-mist: #f5f2ff;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    font-family: var(--font-sans);
+    color: #171329;
+    background: #fff;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: #ffd83d;
+    color: #171329;
+  }
+}
+
+:root {
+  --glass-surface: rgba(255, 255, 255, 0.82);
+  --glass-surface-soft: rgba(255, 255, 255, 0.65);
+  --glass-surface-elevated: rgba(255, 255, 255, 0.94);
+  --glass-surface-lavender: rgba(245, 242, 255, 0.78);
+  --glass-border: rgba(255, 255, 255, 0.65);
+  --glass-border-subtle: rgba(23, 19, 41, 0.08);
+  --glass-border-lavender: rgba(185, 165, 255, 0.35);
+  --glass-border-highlight: rgba(114, 80, 245, 0.32);
+  --glass-shadow: 0 10px 30px -10px rgba(23, 19, 41, 0.10), 0 2px 8px -2px rgba(23, 19, 41, 0.04);
+  --glass-shadow-elevated: 0 24px 48px -12px rgba(23, 19, 41, 0.18), 0 0 1px 1px rgba(255, 255, 255, 0.85) inset;
+  --glass-shadow-soft: 0 6px 20px -8px rgba(23, 19, 41, 0.08);
+  --glass-blur: 16px;
+  --glass-blur-heavy: 24px;
+}
+
+@layer utilities {
+  .liquid-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.86) 0%, rgba(250, 248, 255, 0.74) 100%);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .liquid-glass-elevated {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.94) 0%, rgba(248, 245, 255, 0.88) 100%);
+    backdrop-filter: blur(var(--glass-blur-heavy));
+    -webkit-backdrop-filter: blur(var(--glass-blur-heavy));
+    border: 1px solid rgba(255, 255, 255, 0.85);
+    box-shadow: var(--glass-shadow-elevated);
+  }
+
+  .liquid-glass-soft {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.68) 0%, rgba(245, 242, 255, 0.52) 100%);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.50);
+    box-shadow: var(--glass-shadow-soft);
+  }
+
+  .liquid-glass-lavender {
+    background: linear-gradient(135deg, rgba(245, 242, 255, 0.82) 0%, rgba(238, 233, 255, 0.68) 100%);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border-lavender);
+    box-shadow: var(--glass-shadow);
+  }
+
+  .liquid-glass-interactive {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(250, 248, 255, 0.76) 100%);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .liquid-glass-interactive:hover {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(245, 240, 255, 0.86) 100%);
+    border-color: var(--glass-border-highlight);
+    box-shadow: 0 16px 36px -10px rgba(114, 80, 245, 0.20), 0 0 1px 1px rgba(255, 255, 255, 0.9) inset;
+    transform: translateY(-3px);
+  }
+
+  .glass-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .glass-sheen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.85) 50%, transparent 100%);
+    pointer-events: none;
+  }
+}
+
+@supports not ((-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px))) {
+  .liquid-glass,
+  .liquid-glass-elevated,
+  .liquid-glass-soft,
+  .liquid-glass-lavender,
+  .liquid-glass-interactive {
+    background-color: #ffffff !important;
+  }
+}
+
+@keyframes floaty {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+.floaty { animation: floaty 6s ease-in-out infinite; }
+.floaty-slow { animation: floaty 8s ease-in-out infinite reverse; }
+
+@media (prefers-reduced-motion: reduce) {
+  .liquid-glass-interactive {
+    transition: none !important;
+    transform: none !important;
+  }
+  .liquid-glass-interactive:hover {
+    transform: none !important;
+  }
+  .floaty,
+  .floaty-slow {
+    animation: none !important;
+  }
+}
