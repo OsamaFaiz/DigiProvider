@@ -1012,7 +1012,12 @@ export function SectionHead({
   )
 }
 
-export function PageHero({ title, text }: { title: string; text: string }) {
+interface PageHeroProps {
+  title: string
+  text: string
+}
+
+export function PageHero({ title, text }: PageHeroProps) {
   return (
     <section className="relative overflow-hidden bg-gradient-to-br from-deep-violet via-deep-purple to-purple px-6 pb-28 pt-40 text-center text-white">
       <div className="mx-auto max-w-3xl">

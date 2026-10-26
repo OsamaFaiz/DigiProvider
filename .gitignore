@@ -16,8 +16,7 @@ vite.config.*.timestamp-*
 logs/
 *.log
 .claude-replay.*
-.tmp-*
-/.figma/design-context/
+.figma/
 
 # OS and editor files
 .DS_Store

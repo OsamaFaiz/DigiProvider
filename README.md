@@ -108,8 +108,7 @@ cp .env.example .env.local
 
 Default variables:
 - `PORT`: Development server port (default: `8443`)
-- `FIGMA_DEV_SERVER_HOST`: Host interface (default: `0.0.0.0`)
-- `FIGMA_PUBLIC_URL`: Optional asset CDN base path
+- `HOST`: Host interface (default: `0.0.0.0`)
 
 ### 4. Run the Development Server
 

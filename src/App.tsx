@@ -14,12 +14,7 @@ import {
   ServiceCards,
   ServicesCatalogue,
 } from "./components/Sections"
-import {
-  BUSINESS_CONTACT,
-  BUSINESS_WHATSAPP,
-  getWhatsAppUrl,
-  getCallingUrl,
-} from "./contactConfig"
+import { BUSINESS_CONTACT, getWhatsAppUrl } from "./contactConfig"
 
 const getRoute = () =>
   window.location.hash.replace(/^#\/?/, "").split("?")[0].split("#")[0]
