@@ -69,38 +69,54 @@ export function Link({
 export function Logo({
   dark = false,
   className = "",
+  showText = true,
 }: {
   dark?: boolean
   className?: string
+  showText?: boolean
 }) {
   return (
     <Link
       to=""
-      className={`inline-flex items-center transition hover:opacity-90 active:scale-[0.98] ${className}`}
+      className={`inline-flex items-center gap-2.5 transition hover:opacity-95 active:scale-[0.98] ${className}`}
       aria-label="DigiProvider Home"
     >
       {dark ? (
-        <div className="inline-flex items-center justify-center rounded-2xl bg-white p-2.5 shadow-sm transition hover:shadow-md border border-white/20">
+        <div className="flex items-center gap-3">
+          <div className="inline-flex items-center justify-center rounded-2xl bg-white p-2 shadow-sm transition hover:shadow-md border border-white/20">
+            <img
+              src={logoImg}
+              alt="DigiProvider Logo"
+              width={1024}
+              height={1024}
+              className="h-10 w-10 sm:h-12 sm:w-12 object-contain"
+              loading="eager"
+              decoding="async"
+            />
+          </div>
+          {showText && (
+            <span className="text-xl font-extrabold tracking-tight text-white">
+              Digi<span className="text-cta">Provider</span>
+            </span>
+          )}
+        </div>
+      ) : (
+        <div className="flex items-center gap-2.5">
           <img
             src={logoImg}
             alt="DigiProvider Logo"
             width={1024}
             height={1024}
-            className="h-14 w-14 sm:h-16 sm:w-16 object-contain"
+            className="h-10 w-10 sm:h-11 sm:w-11 md:h-12 md:w-12 object-contain shrink-0"
             loading="eager"
             decoding="async"
           />
+          {showText && (
+            <span className="text-lg sm:text-xl font-extrabold tracking-tight text-ink">
+              Digi<span className="text-violet">Provider</span>
+            </span>
+          )}
         </div>
-      ) : (
-        <img
-          src={logoImg}
-          alt="DigiProvider Logo"
-          width={1024}
-          height={1024}
-          className="h-11 w-11 sm:h-12 sm:w-12 md:h-13 md:w-13 object-contain shrink-0"
-          loading="eager"
-          decoding="async"
-        />
       )}
     </Link>
   )

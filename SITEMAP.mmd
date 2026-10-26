@@ -1,0 +1,108 @@
+flowchart TD
+    %% DigiProvider Website Architecture & Sitemap
+
+    subgraph Chrome["Global Common Chrome"]
+        Announce["Announcement Bar (60px)<br/>Carousel (4 Slides)"]
+        Nav["Sticky Pill Navbar<br/>(Logo, Nav Links, Search, CTA)"]
+        Float["Floating Quick Contacts<br/>(WhatsApp & Phone)"]
+        Foot["Footer<br/>(Quick Links, Services, Legal)"]
+    end
+
+    subgraph Overlays["Global Overlays & Modals"]
+        MegaMenu["Services Mega Menu<br/>(16 Categories Tabbed)"]
+        SearchModal["Global Catalogue Search<br/>(Instant 96 Services Filter)"]
+        MobileDrawer["Mobile Navigation Drawer"]
+        ServiceModal["Service Details Modal<br/>(Deliverables, Timeline, Pricing)"]
+    end
+
+    subgraph Pages["Primary SPA Hash Views"]
+        Home["🏠 Home Page<br/>(#/)"]
+        Services["🛠️ Services Catalogue<br/>(#/services)"]
+        Work["💼 Our Work / Portfolio<br/>(#/work)"]
+        Pricing["💳 Pricing Packages<br/>(#/pricing)"]
+        Contact["📞 Contact Us<br/>(#/contact)"]
+        Blog["📰 Agency Blog<br/>(#/blog)"]
+        FAQ["❓ Frequently Asked Questions<br/>(#/faq)"]
+        Quote["📝 Start a Project / Quote Engine<br/>(#/quote)"]
+    end
+
+    subgraph ServiceClusters["16 Categories · 96 Offerings"]
+        CatDev["Development Group (24 Services)<br/>• Website Dev (7)<br/>• Web Apps & SaaS (7)<br/>• Mobile App Dev (5)<br/>• E-commerce (5)"]
+        CatAI["AI & Automation Group (27 Services)<br/>• WhatsApp Automation & Bots (10)<br/>• WhatsApp AI & AI Agents (10)<br/>• CRM & Business Automation (7)"]
+        CatGrowth["Growth & Marketing Group (17 Services)<br/>• SEO & Analytics (6)<br/>• Digital Marketing & Ads (6)<br/>• Content Strategy & Copy (5)"]
+        CatDesign["Design & Branding Group (10 Services)<br/>• UI/UX & Product Design (5)<br/>• Digital Presence & Branding (5)"]
+        CatInfra["Infrastructure & Support Group (18 Services)<br/>• Cloud & DevOps (5)<br/>• Cybersecurity & Hardening (4)<br/>• QA & Multi-Device Testing (4)<br/>• Support & Maintenance Retainers (5)"]
+    end
+
+    subgraph External["External Action Endpoints"]
+        WA["💬 WhatsApp Direct Click-to-Chat<br/>(+91 72810 45393)"]
+        Tel["📞 Telephone Calling<br/>(tel:+917281045393)"]
+    end
+
+    %% Chrome Connections
+    Announce -->|Claim Offer| WA
+    Announce -->|Explore AI & Browse| Services
+    Announce -->|Start Project| Quote
+
+    Nav --> Home
+    Nav -->|Dropdown| MegaMenu
+    Nav --> Work
+    Nav --> Pricing
+    Nav --> Contact
+    Nav --> Blog
+    Nav --> FAQ
+    Nav -->|Search Icon| SearchModal
+    Nav -->|Start a Project CTA| Quote
+    Nav -->|Mobile Hamburger| MobileDrawer
+
+    Float --> WA
+    Float --> Tel
+
+    %% Overlays Connections
+    MegaMenu --> Services
+    MegaMenu -->|Custom Quote| Quote
+    MegaMenu -->|Enquire| WA
+
+    SearchModal -->|Jump to Service| Services
+    SearchModal -->|Chat| WA
+
+    MobileDrawer --> Pages
+
+    %% Page Connections
+    Home -->|Hero CTA| Quote
+    Home -->|Explore Services| Services
+    Home -->|View All Projects| Work
+    Home -->|Choose Package| Quote
+    Home -->|WhatsApp Consultation| WA
+
+    Services --> ServiceClusters
+    ServiceClusters -->|View Details| ServiceModal
+    ServiceClusters -->|Enquire| WA
+    ServiceClusters -->|Get Quote| Quote
+    ServiceModal --> WA
+    ServiceModal --> Quote
+
+    Work -->|Enquire similar build| WA
+    Work -->|CTA| Quote
+
+    Pricing -->|Starter, Growth, Enterprise| Quote
+    Pricing -->|Browse 96 Services| Services
+    Pricing -->|WhatsApp Enquiry| WA
+
+    Contact -->|Form Submission| Quote
+    Contact -->|Direct WhatsApp| WA
+    Contact -->|Direct Phone| Tel
+
+    Quote -->|Submit In-App| Home
+    Quote -->|Send via WhatsApp| WA
+
+    Foot --> Home
+    Foot --> Services
+    Foot --> Work
+    Foot --> Pricing
+    Foot --> Blog
+    Foot --> FAQ
+    Foot --> Contact
+    Foot --> Quote
+    Foot --> WA
+    Foot --> Tel
