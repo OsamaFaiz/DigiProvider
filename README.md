@@ -154,7 +154,7 @@ The project builds to static files in the `dist/` directory and can be deployed 
 ## 📞 Contact & Support
 
 - **WhatsApp & Phone**: [+91 72810 45393](https://wa.me/917281045393)
-- **Email**: [hello@digiprovider.com](mailto:hello@digiprovider.com)
+- **Email**: [contact@digiprovider.com](mailto:hello@digiprovider.com)
 
 ---
 
